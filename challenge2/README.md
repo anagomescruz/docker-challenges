@@ -17,6 +17,8 @@ Setup environment:
 
 Repeat the setup step as many times as necessary throughout the challenges.
 
+Advised time: 1h30min
+
 ### Listing challenges
 
 Images
@@ -48,6 +50,7 @@ Containers
 `docker ps -f "name=sad_wilson" -f "status=running"`
 - List containers by partial name
 `docker ps -a -f "name=t"`
+
 
 ### Lifecycle challenges
 
