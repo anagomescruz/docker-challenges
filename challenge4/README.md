@@ -47,3 +47,6 @@ Note: The provided HelloWorld maven project is only illustrative of what is pres
 - Remove the published image from your machine and run the image by fetching it from Docker Hub
   
 
+###### Tutorials:
+- [How to push to Docker Hub](https://jsta.github.io/r-docker-tutorial/04-Dockerhub.html)
+- [Docker Hub Push](https://docs.docker.com/engine/reference/commandline/push/)
