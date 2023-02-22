@@ -45,6 +45,36 @@ Note: The provided HelloWorld maven project is only illustrative of what is pres
       - `docker push yourHubUsername/repositoryName:NewTag`
         example: `docker push anagomescruz/dockerchallenge:challenge4`
 - Remove the published image from your machine and run the image by fetching it from Docker Hub
+  - **Solution**:
+    - `docker rmi <image_id>`
+    - `docker pull anagomescruz/dockerchallenge:challenge4`
+    - `docker run anagomescruz/dockerchallenge:challenge4`
+    - OR
+    - `docker rmi <image_id>`
+    - `docker run anagomescruz/dockerchallenge:challenge4`
+
+
+### [Extra Challenge] Create and run a jar file in Docker challenge
+- Creates an image which generate and runs the `.jar` file.
+  - **Solution**:
+    - Create a DockerFile with two images
+      - MVN image
+        - create a Dockerfile with a mvn image for version 11
+          `FROM maven:3.5-jdk-11 AS build`
+        - create a workdir
+          `WORKDIR /challenge4`
+        - copy the java project and POM file to the Docker
+          `COPY java_helloworld/src src`
+          `COPY java_helloworld/pom.xml pom.xml`
+        - create the command to build the project
+          `RUN mvn -f pom.xml clean package`
+      - Java image
+        - create a Dockerfile with a java image with verson 11
+          `FROM eclipse-temurin:11`
+        - copy the jar file generated in previous step
+          `COPY --from=build challenge4/target/java_helloworld-1.0-SNAPSHOT.jar java_helloworld-1.0-SNAPSHOT.jar`
+        - create the command to execute the jar
+          `CMD ["java","-jar","java_helloworld-1.0-SNAPSHOT.jar"] `
   
 
 ###### Tutorials:
