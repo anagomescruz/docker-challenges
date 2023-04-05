@@ -40,6 +40,17 @@ How the services interact:
 ### Extra challenges
 
 - Give the database a container name different from the service name
+  - **Solution**
+    - add `container_name:NAME_WE_WANT`
 - Give the database an alias and use it exclusively for communication
+  - **Solution**
+    - add on the restConfig service: 
+    `links: - "database:hello" `
+    - change the env var `QUARKUS_DATASOURCE_JDBC_URL` to use the alias `hello` instead of the service name
+    - [Docker link](https://docs.docker.com/compose/compose-file/compose-file-v3/#links)
 - Guarantee that no service is blocked by another
+  - **Solution**
+    - Use `depends_on`
 - Change the service entrypoint of the `rest_main`
+  - **Solution**
+    -  add `entrypoint: entrypoint ` on the restMain service
