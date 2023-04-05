@@ -31,3 +31,17 @@ How the services interact:
 - Connect through your IDE to the service through remote debug 
 - Live debug the problematic endpoint with debug breakpoints in the service
 - [Remote debugging hint](https://www.baeldung.com/java-application-remote-debugging)
+- **Solution**
+  - on docker compose file add the **entrypoint** command and assign it the jar to run in a debug mode:
+    - `entrypoint: "java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -jar rest_config.jar"`
+    - run the docker compose for the specific container: `docker compose up config` 
+    - we should see a message informing that it's listening in the debug port `Listening for transport dt_socket at address: 5005`
+  - on Intellij:
+    - open the `rest_config` project -> select `edit configuration` -> new `Remote JVM Debug` and give it a name -> `Apply` and `Ok`. 
+    - Then, select the debug button and we should see a message that it's connected to the debug port as well `Connected to the target VM, address: 'localhost:5005', transport: 'socket'`
+    - add some breakpoints in the code in order to identify the issue, for example, in `ConfigsResource` class in the `if` condition and check that the env var is always false.
+  - using Postam:
+    - call the POST `http://0.0.0.0:8080/configs` with the field `active` filled in the body
+  - After identified that the problem is regarding with the env var, fix it.
+    - we should see this env var `ORG_EXAMPLE_CONFIG_CREATION_ENABLED` and set it to `true`, but we also see that this env has a typo, if we go to the code we saw that the variavel is not `configs` but `config`, so we also need to change it.
+  - With all fixed, we can execute the docker compose as usual as test the flow with success.
