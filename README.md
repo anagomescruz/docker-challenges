@@ -32,6 +32,6 @@ For more information regarding Coding Dojo see [codingdojo.org](https://codingdo
 * [Copy a set of files to a Docker container & verify content inside the container](/challenge3)
 * [Run “Hello World” Java Project and push image to Docker Repository](/challenge4)
 * [Run Simple “Hello World” REST Java Project in Docker with configurations](/challenge5)
-* Run REST Java Application which communicates with another service and a DB
+* [Run REST and DB services which communicate with each other](/challenge6)
 * Remote debug the previous Challenge
 

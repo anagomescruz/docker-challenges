@@ -1,0 +1,5 @@
+FROM eclipse-temurin:11
+
+COPY rest_main-*.jar rest_main.jar
+
+CMD [ "java", "-jar", "rest_main.jar" ]
