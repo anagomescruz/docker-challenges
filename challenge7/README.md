@@ -31,3 +31,6 @@ How the services interact:
 - Connect through your IDE to the service through remote debug 
 - Live debug the problematic endpoint with debug breakpoints in the service
 - [Remote debugging hint](https://www.baeldung.com/java-application-remote-debugging)
+
+
+
